@@ -1,0 +1,16 @@
+<%= form_with model: [@blog, @blog.comments.build] do |form| %>
+<%=  %>
+    <p>
+        <%= form.label :name %><%= " (as used in registration)"%><br>
+        <%= form.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+    </p>
+    <p>
+        <%= form.label :comment %><br>
+        <%= form.text_area :body, class: "form-control"%>
+    </p>
+    <p>
+        <% form.label :user_id %>
+        <% form.number_field :user_id, class: "form-control", class: "form-control", value: current_user.id, readonly: true if user_signed_in?%>
+    </p>
+    <p><%= form.submit class: "btn btn-primary"%></p>
+<% end %>

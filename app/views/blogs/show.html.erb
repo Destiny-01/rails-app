@@ -2,10 +2,47 @@
 <br/><div class="card"><div class="card-body">
 <h4 class="card-title"><strong>Title: </strong><%= @blog.title %></h4><br/>
 <p class ="card-text"><strong>Content: </strong><%= @blog.content %></p><br/>
-<h6 class="card-subtitle text-muted text-right">by  <%= @blog.name %></h6>
+<h6 class="card-subtitle text-muted text-right">
+<small class="text-end">Created by: <%= @blog.user.name%>,
+            <%= time_ago_in_words(@blog.created_at) %> ago, 
+            last updated: <%= time_ago_in_words(@blog.updated_at) %> ago
+          </small></h6>
 </div>
 </div><br/>
-<%= link_to 'Edit', edit_blog_path(@blog), class: "btn btn-secondary" %> |
-<%= link_to 'Back', blogs_path, class: "btn btn-dark" %> | 
-<%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
+<%= link_to "Edit", edit_blog_path(@blog), class: "btn btn-secondary" %> |
+<%= link_to "Back", blogs_path, class: "btn btn-dark" %> | 
+<%= link_to "Delete", @blog, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+<br/><br/>
+ <div class="container">
+        <hr/>
+
+    </div>
+</section>
+
+<section class="section comments"><br/>
+    <div class="container">
+        <h5 class="subtitle is-5"><strong><%= @blog.comments.count %></strong> Comments</h5>
+        <%= render "comments/show" %><%#= @blog.comments.order(created_at: :desc)%>
+    <% if user_signed_in? %>
+        <div class="comment-form">
+            <hr />
+            <h3 class="subtitle is-3">Leave a reply</h3>
+             <%= render 'comments/form' %>
+        </div>
+        <% else %>
+        <p>You Have To Sign In To Comment. <br><br>
+            <%= link_to "Sign In Now", new_user_session_path, class: "btn btn-primary btn-sm" %> 
+        </p>
+    <% end %>
+    </div>
+<%# <div class="card">
+    <h4 class="card-header text-center">Comments</h4>
+    <div class="card-body">
+        <%#= render "comments/show"%><br>
+        <%# <div class="card">
+    <h4 class="card-header text-center">Add a comment</h4>
+    <div class="card-body"><h2></h2>
+        <%#= render "comments/form" %>
+    <%# </div> %>
+<%# </div> %>
 </div>

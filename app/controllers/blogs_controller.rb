@@ -31,7 +31,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to @blog, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class BlogsController < ApplicationController
   def update
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to @blog, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit }
@@ -59,15 +59,16 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to blogs_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def correct_user
     @blog = current_user.blogs.find_by(id: params[:id])
-    redirect_to blogs_path, notice: "Not Authorized To Edit This Blog" if @blog.nil?
-  end
+    redirect_to blogs_path, notice: "Not Authorized To Edit This Post" if @blog.nil?
+  end  
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
