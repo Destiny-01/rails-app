@@ -12,5 +12,5 @@
         <% form.label :user_id %>
         <% form.number_field :user_id, class: "form-control", class: "form-control", value: current_user.id, readonly: true if user_signed_in?%>
     </p>
-    <p><%= form.submit class: "btn btn-primary"%></p>
+    <p><%= form.submit"Comment", class: "btn btn-primary"%></p>
 <% end %>
