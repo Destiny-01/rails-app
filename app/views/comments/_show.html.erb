@@ -1,19 +1,16 @@
 <% @blog.comments.each do |comment| %><br/>
     <div class="card">
-    <%# <div class="card-body mb-0 ms-3"> %>
-        <p class ="card-text ms-3 mt-3">
-            <%= comment.body %>
-        </p><br/>
-        <h6 class="card-subtitle text-muted ms-3">
-            <small class="mb-0">
-               by <%= comment.name %><%#= comment.user_id %><div class=""><br>  <%= time_ago_in_words(comment.created_at) %> ago</div>
-            </small>
-        </h6>
-        <br/>
-        <%# <%= link_to "Delete Comment", comment.blog, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm ms-3" %>
-         <%# if comment.user_id == current_user %>
-            <%#= link_to "Delete", [comment.blog], method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %> 
-         <%# end %> 
-    <%# </div> %>
+        <%# <div class="card-body mb-0 ms-3"> %>
+            <p class ="card-text ms-3 mt-3">
+                <%= comment.body %>
+            </p><br/>
+            <h6 class="card-subtitle text-muted ms-3">
+                <small class="mb-0">
+                by <%= comment.name %><div class=""><br>  <%= time_ago_in_words(comment.created_at) %> ago</div>
+                </small>
+            </h6>
+            <br/>
+            <%# <%= link_to "Delete Comment", comment.blog, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm ms-3" %> 
+        <%# </div> %>
     </div>
 <% end %>

@@ -66,7 +66,7 @@ class BlogsController < ApplicationController
 
   def correct_user
     @blog = current_user.blogs.find_by(id: params[:id])
-    redirect_to blogs_path, notice: "Not Authorized To Edit This Post" if @blog.nil?
+    redirect_to blogs_path, notice: "Not Authorized To Make Changes To This Post" if @blog.nil?
   end  
   
 
