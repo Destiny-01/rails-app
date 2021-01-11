@@ -1,0 +1,19 @@
+
+.gs4 {
+    margin: -2px;
+}
+.grid {
+    display: flex;
+}
+.ai-stretch {
+    align-items: stretch !important;
+}
+.jc-center {
+    justify-content: center !important;
+}
+.fd-column {
+    flex-direction: column !important;
+}
+.fc-black-200, .h\:fc-black-200:hover, .f\:fc-black-200:focus {
+    color: var(--black-200) !important;
+}

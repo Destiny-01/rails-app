@@ -12,6 +12,7 @@
           </div>
           <div class="comment-count">
             <br/><span class="tag is-rounded"><%= blog.comments.count %> comments</span>
+            , Score: <%= blog.get_upvotes.size - blog.get_downvotes.size %>
           </div>
           <small class="">Created by: <%= blog.user.name%>,
             <%= time_ago_in_words(blog.created_at) %> ago, 

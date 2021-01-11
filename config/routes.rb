@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :blogs do
     resources :comments
+    member do
+      put 'upvote'
+      put 'downvote'
+    end
   end
   # get 'home/index'
   # root 'home#index'

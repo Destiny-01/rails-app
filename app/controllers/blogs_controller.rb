@@ -68,7 +68,18 @@ class BlogsController < ApplicationController
     @blog = current_user.blogs.find_by(id: params[:id])
     redirect_to blogs_path, notice: "Not Authorized To Make Changes To This Post" if @blog.nil?
   end  
-  
+
+  def upvote
+    @blog = Blog.find(params[:id])
+    @blog.upvote_from current_user
+    redirect_to blog_path
+  end
+
+  def downvote
+    @blog = Blog.find(params[:id])
+    @blog.downvote_from current_user
+    redirect_to blog_path
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
